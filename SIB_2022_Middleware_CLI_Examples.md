@@ -28,20 +28,6 @@ pkcs15-tool --reader 0 --read-public-key 02
 pkcs15-tool --reader 0 --read-certificate 02
 ```
 
-#  Windows 10 Certutil CLI Tool
-The windows Certutil.exe is a command-line program that is installed as part of Certificate Services.
-
-```
-Certutil -SCInfo
-```
-
-# Windows 10 Certification Manager
-Insert the Yubikey and run the following command to start the Windows 10 certification manager:
-
-```
-Certmgr.msc
-```
-
 # pkcs11-tool
 Utility for managing and using PKCS #11 security tokens (e.g. Yubikey).
 
@@ -107,11 +93,26 @@ To verify the signature with openssl, the public key needs to be extracted from 
 openssl x509 -in Yubikey5_DigSign_Cert_Slot_9c.pem -pubkey -noout > Yubikey5_DigSign_PubKey_Slot_9c.pem
 ```
 
-
 Verifying the signature with OpenSSL
 ```
 openssl dgst -sha256 -verify Yubikey5_DigSign_PubKey_Slot_9c.pem -signature data.sig data.txt
 ```
+
+#  Windows 10 Certutil CLI Tool
+The windows Certutil.exe is a command-line program that is installed as part of Certificate Services.
+
+```
+Certutil -SCInfo
+```
+
+# Windows 10 Certification Manager
+Insert the Yubikey and run the following command to start the Windows 10 certification manager:
+
+```
+Certmgr.msc
+```
+
+
 # Yubikey - Using PIV for SSH through PKCS #11
 
 This is a step-by-step guide on setting up a YubiKey with PIV to work
