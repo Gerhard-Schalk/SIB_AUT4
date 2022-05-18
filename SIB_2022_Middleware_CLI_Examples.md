@@ -42,7 +42,7 @@ Insert the Yubikey and run the following command to start the Windows 10 certifi
 Certmgr.msc
 ```
 
-# pkcs11-tool / Open SSL
+# pkcs11-tool
 Utility for managing and using PKCS #11 security tokens (e.g. Yubikey).
 
 Documentation: https://www.mankier.com/1/pkcs11-tool
@@ -57,7 +57,8 @@ pkcs11-tool --list-mechanisms
 pkcs11-tool --list-objects
 ```
 
-# Yubikey Example: Signing data with pkcs11-tool and verifying the signature with openssl
+# Yubikey Example:
+# Signing data with pkcs11-tool and verifying the signature with OpenSSL
 Generate some data to be signed ...
 ```
 echo "Hallo World" > data.txt
@@ -108,7 +109,7 @@ openssl x509 -in Yubikey5_DigSign_Cert_Slot_9c.pem -pubkey -noout > Yubikey5_Dig
 ```
 
 
-Verifying the signature with openssl
+Verifying the signature with OpenSSL
 ```
 openssl dgst -sha256 -verify Yubikey5_DigSign_PubKey_Slot_9c.pem -signature data.sig data.txt
 ```
