@@ -1,8 +1,11 @@
-#	opensc-tool
+# opensc-tool
+OpenSC provides a set of libraries and utilities to work with smart cards. 
+
+Download and Wiki: https://github.com/OpenSC/OpenSC/wiki
 
 Documentation: https://www.mankier.com/package/opensc 
 
-##Basic examples
+### Basic examples
 ```
 opensc-tool --list-readers
 opensc-tool --reader 0 -atr -v
@@ -15,13 +18,15 @@ pkcs15-tool --reader 0 --read-certificate 02
 ```
 
 #  Windows 10 Certutil CLI Tool
-##Certutil Example
+The windows Certutil.exe is a command-line program that is installed as part of Certificate Services.
+
+### Certutil Example
 ```
 Certutil -SCInfo
 ```
 
-##Windows 10 Certification Manager
-Insert the Yubikey and run the Windows 10 certification manager
+# Windows 10 Certification Manager
+Insert the Yubikey and run the following command to start the Windows 10 certification manager:
 
 ```
 Certmgr.msc
