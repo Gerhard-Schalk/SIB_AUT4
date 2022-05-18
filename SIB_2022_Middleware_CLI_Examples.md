@@ -141,7 +141,7 @@ yubico-piv-tool -s 9a -a generate -o Yubikey5_SSH_PubKey_Slot_9a.pem
 Step 2: Create a new self-signed certificate for that public key.
 The only use for the X.509 certificate is to satisfy PIV/PKCS #11 lib. It needs to be able to extract the public-key from the smartcard, and to do that through the X.509 certificate.
 ```
-yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=Yubikey 5 SSH/" -i Yubikey5_SSH_PubKey_Slot_9a.pem -o Yubikey5_SSH_Cert.pem
+yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=Yubikey5_SSH_Slot9a/" -i Yubikey5_SSH_PubKey_Slot_9a.pem -o Yubikey5_SSH_Cert.pem
 ```
 
 Step 3: Import self signed certificate
