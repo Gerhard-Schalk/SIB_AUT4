@@ -1,4 +1,4 @@
-# opensc-tool
+# OpenSC-tool
 OpenSC provides a set of libraries and utilities to work with smart cards. 
 OpenSC implements the standard APIs to smart cards e.g.
 PKCS#11 API, Windows’ Smart Card Minidriver and macOS CryptoTokenKit.
