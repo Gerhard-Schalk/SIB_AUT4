@@ -168,5 +168,5 @@ type yubico_ssh_key.pub | ssh pi@xx.xx.xx.xx -p xx "mkdir -p ~/.ssh && cat >> ~/
 
 authenticate to the target system using the new key
 ```
-ssh -I "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" pi@xx.xx.xx.xx -p xxxx
+ssh -I "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" pi@xx.xx.xx.xx -p xx
 ```
