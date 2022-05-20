@@ -80,6 +80,7 @@ Utility for managing and using PKCS #11 security tokens (e.g. Yubikey).
 
 ### Basic examples
 ```
+pkcs11-tool -L
 pkcs11-tool --list-slots
 pkcs11-tool --list-mechanisms
 pkcs11-tool --list-objects
