@@ -111,7 +111,7 @@ pkcs11-tool --read-object --id 02 --type cert --output-file Yubikey5_DigSign_Cer
 
 **Step 4:** To convert the certificate in DER format to PEM format, use OpenSSL tools:
 ```
-openssl x509 -inform DER -in Yubikey5_DigSign_PubKey_Slot_9c.der -outform PEM > Yubikey5_DigSign_PubKey_Slot_9c.pem
+openssl x509 -inform DER -in Yubikey5_DigSign_Cert_Slot_9c.crt -outform PEM > Yubikey5_DigSign_Cert_Slot_9c.pem
 ```
 
 
