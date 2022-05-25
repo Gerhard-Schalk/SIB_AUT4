@@ -42,7 +42,7 @@ yubico-piv-tool -r "Yubico YubiKey OTP+FIDO+CCID 0" -a status
 The windows Certutil.exe is a command-line program that is installed as part of Certificate Services. Use the following command to display the Yubikey certificates. 
 
 **Note:** 
-- Default Yubikey PIN: `0123456`
+- Default Yubikey PIN: `123456`
 - Default Yubikey PUK:: `12345678`
 
 ```
@@ -97,7 +97,7 @@ echo "Hallo World" > data.txt
 ```
    
 **Step 2:** Signing data with pkcs11-tool using Yubikey KEY_ID 02 (Slot 9c)
-- **Note:**  Default Yubikey PIN: `0123456`
+- **Note:**  Default Yubikey PIN: `123456`
 
 ```
 pkcs11-tool --sign -m RSA-SHA256 --id 2 -i data.txt -o data.sig
