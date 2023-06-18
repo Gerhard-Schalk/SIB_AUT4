@@ -103,8 +103,7 @@ pkcs11-tool --list-objects
 ```
 **Note:** If required specify a PKCS#11 module (or library) to load:
 ```
-pkcs11-tool --module "C:\Program Files\Yubico\Yubico PIV 
-Tool\bin\libykcs11.dll" --list-slots
+pkcs11-tool --module "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" --list-slots
 ```
 
 # Yubikey - Signing data with pkcs11-tool and verifying the signature with OpenSSL
