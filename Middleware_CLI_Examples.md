@@ -19,6 +19,7 @@ opensc-tool --list-algorithms
 ```
 opensc-tool --reader 0 --atr -v
 ```
+Use the following link to parse your ATR:  https://smartcard-atr.apdu.fr/ 
 ```
 opensc-tool --reader 0 --name
 ```
@@ -27,6 +28,10 @@ Use the YubiKey Manager to configure the PIV functionality on your YubiKey 5 NFC
 - Download: https://www.yubico.com/support/download/yubikey-manager/
 
 Use the YubiKey Manager to generate a self-signed RSA2048 certificate in Slot9c (KEY_ID = 02).
+
+![Yubikey Manager 1](/images/YubikeyManager_1.png)
+
+![Yubikey Manager 2](/images/YubikeyManager_2.png)
 
 ## Yubico PIV Tool
 The YubiKey supports the Personal Identity Verification (PIV) card interface specified in NIST SP 800-73 document "Cryptographic Algorithms and Key Sizes for PIV". 
