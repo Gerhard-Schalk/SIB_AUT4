@@ -33,6 +33,8 @@ Use the YubiKey Manager to generate a self-signed RSA2048 certificate in Slot9c 
 
 ![Yubikey Manager 2](/images/YubikeyManager_2.png)
 
+![Yubikey key alias per slot and object type](/images/Yubikey_key_alias.png)
+
 ## Yubico PIV Tool
 The YubiKey supports the Personal Identity Verification (PIV) card interface specified in NIST SP 800-73 document "Cryptographic Algorithms and Key Sizes for PIV". 
 
@@ -48,6 +50,8 @@ Example: Displays the device’s meta data and the slots content
 ```
 yubico-piv-tool -r "Yubico YubiKey OTP+FIDO+CCID 0" -a status
 ```
+![Yubikey PIV Tool](/images/PivTool_Device_meta_data.png)
+
 #  Windows 10 Certutil CLI Tool
 The windows Certutil.exe is a command-line program that is installed as part of Certificate Services. Use the following command to display the Yubikey certificates. 
 
@@ -58,8 +62,11 @@ The windows Certutil.exe is a command-line program that is installed as part of 
 ```
 Certutil -SCInfo
 ```
+![Cert Util](/images/CertUtil_1.png)
 
-# Windows 10 Certification Manager
+![Cert Util](/images/CertUtil_2.png)
+
+# Windows Certification Manager
 Insert the Yubikey and run the following command to start the Windows 10 certification manager:
 
 ```
@@ -67,14 +74,29 @@ Certmgr.msc
 ```
 Try to find you Yubikey certificate.
 
+![Windows Certification Manager](/images/Win_Certmgr.png)
+
+# PKCS#15 and ISO/IEC 7816-15 File Structure
+- Interoperability using Standardized and Dynamic file system.
+- EF.DIR contains Applications on card indexed by their AID’s.
+- Each Application contains predefined and mandatory information
+  - EF (TokenInfo)
+    - Generic information about the card such as card capabilities, Serial Number, Algorithms, etc.
+  - EF (Object Directory File - ODF)
+    - Contains pointers to other directory files of a particular PKCS#15 Class
+![PKCS#15](/images/PKCS15.png)
+
 # OpenSC – pkcs15-tool
+
 Utility for manipulating PKCS #15 data structures on smart cards and similar security token. 
 
 - Documentation: https://www.mankier.com/1/pkcs15-tool
 
+
 **Note**: Use the reader number returned by ```opensc-tool --list-readers```.
 
 ### Basic examples
+**Note**: Use the reader number returned by ```opensc-tool --list-readers```.
 ```
 pkcs15-tool --reader 0 --dump
 ```
@@ -94,7 +116,18 @@ pkcs15-tool --reader 0 --read-certificate 02
 # pkcs11-tool
 Utility for managing and using PKCS #11 security tokens (e.g. Yubikey).
 
+- pkcs11-tool is a command line tool to test functions and perform crypto operations using a PKCS#11. 
+- It always requires a local available working PKCS11 module. 
+  - .DLL in Windows
+  - .so in Linux
+ - pkcs11-tool suppots various cryptographic action. 
+
+
 - Documentation: https://www.mankier.com/1/pkcs11-tool
+
+  ### PKCS#11 - Cryptoki System Architecture
+
+  ![PKCS#11](/images/PKCS11_Architecture.png)
 
 ### Basic examples
 ```
@@ -112,6 +145,7 @@ pkcs11-tool --module "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll"
 ```
 
 # Yubikey - Signing data with pkcs11-tool and verifying the signature with OpenSSL
+## Signing
 **Step 1:** Generate some data to be signed ...
 ```
 echo "Hallo World" > data.txt
@@ -124,25 +158,25 @@ echo "Hallo World" > data.txt
 pkcs11-tool --sign -m RSA-SHA256 --id 2 -i data.txt -o data.sig
 ```
 
-
-**Step 3:** Read the certificate with KEY_ID 02 (Slot 9c) in DER format from the Yubikey 
+## Verifying 
+**Step 1:** Read the certificate with KEY_ID 02 (Slot 9c) in DER format from the Yubikey 
 ```
 pkcs11-tool --read-object --id 02 --type cert --output-file Yubikey5_DigSign_Cert_Slot_9c.crt
 ```	
 
 
-**Step 4:** To convert the certificate in DER format to PEM format, use OpenSSL tools:
+**Step 2:** To convert the certificate in DER format to PEM format, use OpenSSL tools:
 ```
 openssl x509 -inform DER -in Yubikey5_DigSign_Cert_Slot_9c.crt -outform PEM > Yubikey5_DigSign_Cert_Slot_9c.pem
 ```
 
 
-**Step 5:** To verify the signature with openssl, the public key needs to be extracted from the certificate.
+**Step 3:** To verify the signature with openssl, the public key needs to be extracted from the certificate.
 ```
 openssl x509 -in Yubikey5_DigSign_Cert_Slot_9c.pem -pubkey -noout > Yubikey5_DigSign_PubKey_Slot_9c.pem
 ```
 
-**Step 6:** Verifying the signature with OpenSSL
+**Step 4:** Verifying the signature with OpenSSL
 ```
 openssl dgst -sha256 -verify Yubikey5_DigSign_PubKey_Slot_9c.pem -signature data.sig data.txt
 ```
@@ -153,7 +187,13 @@ openssl dgst -sha256 -verify Yubikey5_DigSign_PubKey_Slot_9c.pem -signature data
 This is a step-by-step guide on setting up a YubiKey with PIV to work
 for public-key authentication with OpenSSH through PKCS#11.
 
+![SSH](/images/SSH.png)
+
+![SSH through PKCS #11](/images/SSH_Console.png)
+
 For more details see https://developers.yubico.com/PIV/Guides/SSH_with_PIV_and_PKCS11.html
+
+![Yubikey key alias per slot and object type](/images/Yubikey_key_alias_ssh.png)
 
 **Note:** Use option ```-r "Yubico YubiKey OTP+FIDO+CCID 0"``` to define a PC/SC reader. 
 
@@ -184,10 +224,12 @@ ssh-keygen -D "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" -e > y
 - Linux: ```ssh-copy-id <"USERNAME">@<"IP-ADDRESS">```
 - Windows: see below:
 ```
-type yubico_ssh_key.pub | ssh pi@xx.xx.xx.xx -p xx "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+type yubico_ssh_key.pub | ssh pi@10.0.0.1 -p 22 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
 
 Authenticate to the target system using the Yubikey through PKCS11#:
 ```
-ssh -I "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" pi@xx.xx.xx.xx -p xx
+ssh -I "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" pi@10.0.0.1 -p 22
 ```
+# Digitally Sign a Microsoft Word Document using a Smart Card
+Please see:  https://playbooks.idmanagement.gov/playbooks/signword/ 
