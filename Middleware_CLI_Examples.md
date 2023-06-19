@@ -212,6 +212,13 @@ The only use for the X.509 certificate is to satisfy PIV/PKCS #11 lib. It needs 
 yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=Yubikey5_SSH_Slot9a/" -i Yubikey5_SSH_PubKey_Slot_9a.pem -o Yubikey5_SSH_Cert.pem
 ```
 
+Print the certificate in text form with OpenSSL
+
+```
+openssl x509 -in Yubikey5_SSH_Cert.pem -text -noout
+```
+
+
 **Step 3:** Import self signed certificate
 ```
 yubico-piv-tool -a import-certificate -s 9a -i Yubikey5_SSH_Cert.pem
