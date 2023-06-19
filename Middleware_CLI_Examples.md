@@ -125,9 +125,8 @@ Utility for managing and using PKCS #11 security tokens (e.g. Yubikey).
 
 - Documentation: https://www.mankier.com/1/pkcs11-tool
 
-  ### PKCS#11 - Cryptoki System Architecture
-
-  ![PKCS#11](/images/PKCS11_Architecture.png)
+### PKCS#11 - Cryptoki System Architecture
+![PKCS#11](/images/PKCS11_Architecture.png)
 
 ### Basic examples
 ```
@@ -170,6 +169,11 @@ pkcs11-tool --read-object --id 02 --type cert --output-file Yubikey5_DigSign_Cer
 openssl x509 -inform DER -in Yubikey5_DigSign_Cert_Slot_9c.crt -outform PEM > Yubikey5_DigSign_Cert_Slot_9c.pem
 ```
 
+Print the certificate in text form with OpenSSL
+
+```
+openssl x509 -in Yubikey5_DigSign_Cert_Slot_9c.pem -text -noout
+```
 
 **Step 3:** To verify the signature with openssl, the public key needs to be extracted from the certificate.
 ```
