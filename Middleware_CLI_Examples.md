@@ -1,7 +1,7 @@
 # OpenSC-tool
-OpenSC provides a set of libraries and utilities to work with smart cards. 
-OpenSC implements the standard APIs to smart cards e.g.
-PKCS#11 API, Windows’ Smart Card Minidriver and macOS CryptoTokenKit.
+OpenSC provides a set of libraries and utilities to work with Smartcards. 
+OpenSC implements the standard APIs to Smartcards e.g.
+PKCS#11 API, Windows’ SmartCard Minidriver and macOS CryptoTokenKit.
 
 - Wiki: https://github.com/OpenSC/OpenSC/wiki
 - Download: https://github.com/OpenSC/OpenSC
@@ -88,7 +88,7 @@ Try to find you Yubikey certificate.
 
 # OpenSC – pkcs15-tool
 
-Utility for manipulating PKCS #15 data structures on smart cards and similar security token. 
+Utility for manipulating PKCS #15 data structures on Smartcards and similar security token. 
 
 - Documentation: https://www.mankier.com/1/pkcs15-tool
 
@@ -224,7 +224,7 @@ openssl x509 -in Yubikey5_SSH_Cert.pem -text -noout
 yubico-piv-tool -a import-certificate -s 9a -i Yubikey5_SSH_Cert.pem
 ```
 
-**Step 4:** Export the public key from the PIV Smart Card in the correct format for SSH.
+**Step 4:** Export the public key from the PIV Smartcard in the correct format for SSH.
 ```
 ssh-keygen -D "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" -e > yubico_ssh_key.pub
 ```
@@ -242,5 +242,5 @@ Authenticate to the target system using the Yubikey through PKCS11#:
 ```
 ssh -I "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" pi@10.0.0.1 -p 22
 ```
-# Digitally Sign a Microsoft Word Document using a Smart Card
+# Digitally Sign a Microsoft Word Document using a Smartcard
 Please see:  https://playbooks.idmanagement.gov/playbooks/signword/ 
