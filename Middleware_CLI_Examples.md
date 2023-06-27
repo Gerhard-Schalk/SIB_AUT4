@@ -6,7 +6,9 @@ PKCS#11 API, Windows’ SmartCard Minidriver and macOS CryptoTokenKit.
 - Wiki: https://github.com/OpenSC/OpenSC/wiki
 - Documentation: https://www.mankier.com/package/opensc
 - Download: https://github.com/OpenSC/OpenSC
-  - **Note:** Add OpenSC Tool path to environment variables
+  
+  **Note:** Add OpenSC Tool path to environment variables
+
   ![Add OpenSC Tool path to environment variables](/images/OpenSC_Install_Add_Env_Var.png)
  
 
