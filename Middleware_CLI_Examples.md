@@ -4,16 +4,18 @@ OpenSC implements the standard APIs to Smartcards e.g.
 PKCS#11 API, Windows’ SmartCard Minidriver and macOS CryptoTokenKit.
 
 - Wiki: https://github.com/OpenSC/OpenSC/wiki
+- Documentation: https://www.mankier.com/package/opensc
 - Download: https://github.com/OpenSC/OpenSC
   - **Note:** Add OpenSC Tool path to environment variables
-- Documentation: https://www.mankier.com/package/opensc 
+  ![Add OpenSC Tool path to environment variables](/images/OpenSC_Install_Add_Env_Var.png)
+ 
 
 ### Basic examples
 ```
 opensc-tool --list-readers
 ```
 ```
-opensc-tool --list-algorithms
+opensc-tool --reader 0 --list-algorithms
 ```
 **Note**: Use the reader number returned by ```opensc-tool --list-readers```.
 ```
@@ -26,6 +28,10 @@ opensc-tool --reader 0 --name
 ## YubiKey Manager
 Use the YubiKey Manager to configure the PIV functionality on your YubiKey 5 NFC.
 - Download: https://www.yubico.com/support/download/yubikey-manager/
+
+**Note:** 
+- Default Yubikey PIN: `0123456`
+- Default Yubikey PUK:: `12345678`
 
 Use the YubiKey Manager to generate a self-signed RSA2048 certificate in Slot9c (KEY_ID = 02).
 
@@ -43,8 +49,12 @@ PIV enables you to perform RSA or ECC sign/decrypt operations using a private ke
 This project contain the library, tools and PKCS#11 module to interact with the hardware functionality.
 
 - Download: https://developers.yubico.com/yubico-piv-tool/Releases/
-  - **Note:** Add Yubico PIV Tool path to environment variables
 - Documenation: https://developers.yubico.com/yubico-piv-tool/Manuals/yubico-piv-tool.1.html 
+
+  **Note:** Add Yubico PIV Tool path to environment variables
+
+
+  ![Add Yubico PIV Tool path to environment variables](/images/YubicoPivTool_Install_Add_Env_Var.png)
 
 Example: Displays the device’s meta data and the slots content
 ```
