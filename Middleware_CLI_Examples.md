@@ -3,9 +3,9 @@ OpenSC provides a set of libraries and utilities to work with Smartcards.
 OpenSC implements the standard APIs to Smartcards e.g.
 PKCS#11 API, Windows’ SmartCard Minidriver and macOS CryptoTokenKit.
 
-- Wiki: https://github.com/OpenSC/OpenSC/wiki
+- Wiki and Download: https://github.com/OpenSC/OpenSC/wiki
 - Documentation: https://www.mankier.com/package/opensc
-- Download: https://github.com/OpenSC/OpenSC
+- Source Code Download: https://github.com/OpenSC/OpenSC
   
   **Note:** Add OpenSC Tool path to environment variables
 
