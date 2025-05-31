@@ -255,4 +255,5 @@ Authenticate to the target system using the Yubikey through PKCS11#:
 ssh -I "C:\Program Files\Yubico\Yubico PIV Tool\bin\libykcs11.dll" pi@10.0.0.1 -p 22
 ```
 # Digitally Sign a Microsoft Word Document using a Smartcard
-Please see:  https://playbooks.idmanagement.gov/playbooks/signword/ 
+Please see: https://www.idmanagement.gov/playbooks/signword/
+
