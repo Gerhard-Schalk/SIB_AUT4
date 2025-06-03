@@ -3,7 +3,7 @@
 The windows Certutil.exe is a command-line program that is installed as part of Certificate Services. Use the following command to display the Yubikey certificates. 
 
 **Note:** 
-- Default Yubikey PIN: `0123456`
+- Default Yubikey PIN: `123456`
 - Default Yubikey PUK:: `12345678`
 
 ```
