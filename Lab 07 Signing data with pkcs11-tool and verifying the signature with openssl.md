@@ -6,7 +6,7 @@ echo "Hallo World" > data.txt
 ```
    
 **Step 2:** Signing data with pkcs11-tool using Yubikey KEY_ID 02 (Slot 9c)
-- **Note:**  Default Yubikey PIN: `0123456`
+- **Note:**  Default Yubikey PIN: `123456`
 
 ```
 pkcs11-tool --sign -m RSA-SHA256 --id 2 -i data.txt -o data.sig
