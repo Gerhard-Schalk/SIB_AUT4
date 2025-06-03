@@ -3,7 +3,7 @@ Use the YubiKey Manager to configure the PIV functionality on your YubiKey 5 NFC
 - Download: https://www.yubico.com/support/download/yubikey-manager/
 
 **Note:** 
-- Default Yubikey PIN: `0123456`
+- Default Yubikey PIN: `123456`
 - Default Yubikey PUK:: `12345678`
 
 Use the YubiKey Manager to **generate a self-signed RSA2048 certificate** in **Slot9c (KEY_ID = 02)**.
