@@ -13,6 +13,12 @@ This project contain the library, tools and PKCS#11 module to interact with the 
 
   ![Add Yubico PIV Tool path to environment variables](/images/YubicoPivTool_Install_Add_Env_Var.png)
 
+Example: Determining the exact PC/SC reader name.
+
+```
+yubico-piv-tool -a list-readers
+```
+
 Example: Displays the device’s meta data and the slots content
 ```
 yubico-piv-tool -r "Yubico YubiKey OTP+FIDO+CCID 0" -a status
