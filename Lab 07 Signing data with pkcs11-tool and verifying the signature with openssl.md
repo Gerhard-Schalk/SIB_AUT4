@@ -9,7 +9,7 @@ echo "Hallo World" > data.txt
 - **Note:**  Default Yubikey PIN: `123456`
 
 ```
-pkcs11-tool --sign -m RSA-SHA256 --id 2 -i data.txt -o data.sig
+pkcs11-tool --sign -m RSA-SHA256 --id 02 -i data.txt -o data.sig
 ```
 
 ## Verifying 
